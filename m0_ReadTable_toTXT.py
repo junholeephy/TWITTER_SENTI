@@ -123,6 +123,15 @@ class MySQL_DATA:
                     try:
                         self.cur.execute(save_command)
                         Write_list = []
+                        description = self.cur.description
+                        title_col_list = []
+                        for desp in description:
+                            DESP = desp[0]
+                            DESP = str(DESP)
+                            #DESP.replace(" ","")
+                            #print(DESP); print(len(DESP))
+                            title_col_list.append(DESP)
+                        Write_list.append(title_col_list)
                         for row in self.cur.fetchall():
                             #print(row)
                             temp_list = []
